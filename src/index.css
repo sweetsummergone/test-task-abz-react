@@ -1,13 +1,108 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@import url("./vendor/normalize.css");
+@import url("./vendor/fonts/fonts.css");
+
+* {
+  font-family: Nunito;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 60px;
+  background-color: white;
+}
+
+.header__image {
+  margin-right: 4px;
+  max-width: 104px;
+  max-height: 26px;
+}
+
+.header__button-users {
+  margin-left: 10px;
+}
+
+.header__button-signup {
+  margin-left: 10px;
+}
+
+.desc {
+  position: relative;
+  height: 500px;
+}
+
+.desc__background {
+  position: absolute;
+  z-index: -1;
+  width: 100%;
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(./images/background.jpeg);
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.desc__info {
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+}
+
+.desc__title {
+  margin: 0;
+  font-size: 40px;
+  line-height: 40px;
+  font-weight: 400;
+  color: white;
+}
+
+.desc__content {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 26px;
+  color: white;
+}
+
+.desc__button-signup {
+  margin: 0 auto;
+  margin-top: 32px;
+}
+
+.button {
+  border: none;
+  width: 100px;
+  height: 34px;
+  border-radius: 80px;
+  background-color: #F4E041;
+  font-size: 16px;
+  line-height: 26px;
+}
+
+@media screen and (max-width: 360px) {
+  .header {
+    max-width: 360px;
+    height: 60px;
+  }
+
+  .desc__background {
+    /* There is something strange =\ */
+    background-position-y: -87vw;
+    background-position-x: 51%;
+    height: 226vw;
+  }
+
+  .desc__info {
+    max-width: 328px;
+  }
+
+  .desc__title {
+    margin-top: 40px;
+  }
+
+  .desc__content {
+    margin-top: 21px;
+  }
+  
 }
