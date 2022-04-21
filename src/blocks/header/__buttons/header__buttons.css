@@ -1,0 +1,21 @@
+.header__buttons {
+    margin-right: calc((100vw - 1187px) / 2);
+}
+
+@media screen and (max-width: 767px) {  
+    .header__buttons {
+        margin-right: 16px;
+    }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+    .header__buttons {
+        margin-right: 32px;
+    }
+}
+
+@media screen and (min-width: 1023px) and (max-width: 1169px) {
+    .header__buttons {
+        margin-right: 60px;
+    }
+}

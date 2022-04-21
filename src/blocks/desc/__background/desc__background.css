@@ -1,0 +1,46 @@
+.desc__background {
+    position: absolute;
+    z-index: 0;
+    width: 100%;
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../../../images/background.jpeg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position-y: -47vw;
+    background-position-x: 51%;
+    height: 103vw;
+}
+
+@media screen and (max-width: 767px) {
+    .desc__background {
+        /* There is something strange =\ */
+        background-position-y: -87vw;
+        background-position-x: 51%;
+        height: 226vw;
+    }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+    .desc__background {
+        /* There is something strange =\ */
+        background-position-y: -38vw;
+        background-position-x: 51%;
+        height: 103vw;
+    }
+}
+
+@media screen and (min-width: 1023px) and (max-width: 1169px) {
+    .desc__background {
+        /* There is something strange =\ */
+        background-position-y: -38vw;
+        background-position-x: 51%;
+        height: 103vw;
+    }
+}
+
+@media screen and (min-width: 2500px) {
+    .desc__background {
+        background-position: 0;
+        background-size: cover;
+        height: 100%;
+    }
+}

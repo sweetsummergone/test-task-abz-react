@@ -1,0 +1,13 @@
+.get {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 0 auto;
+    max-width: 704px;
+}
+
+@media screen and (max-width: 767px) {
+    .get {
+        max-width: 328px;
+    }
+}

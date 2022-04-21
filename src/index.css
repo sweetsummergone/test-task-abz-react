@@ -1,469 +1,64 @@
+/* Settings */
 @import url("./vendor/normalize.css");
 @import url("./vendor/fonts/fonts.css");
 
-* {
-  font-family: Nunito;
-}
-
-.button {
-  border: none;
-  width: 100px;
-  height: 34px;
-  border-radius: 80px;
-  background-color: #F4E041;
-  font-size: 16px;
-  line-height: 26px;
-}
-
-.button-disabled {
-  color: white;
-  background: #B4B4B4;
-}
-
-.input {
-  padding: 0;
-  text-indent: 15px;
-  background-color: rgba(255, 255, 255, 0);
-  border: 1px solid #D0CFCF;
-  box-sizing: border-box;
-  border-radius: 4px;
-  width: 380px;
-  height: 54px;
-  margin-top: 50px;
-}
-
-.title {
-  font-family: 'Nunito';
-  font-style: normal;
-  font-weight: 400;
-  font-size: 40px;
-  line-height: 40px;
-  text-align: center;
-}
-
-.header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  height: 60px;
-  min-width: 100%;
-  margin: 0 auto;
-  background-color: white;
-}
-
-.header__image {
-  margin-left: calc((100vw - 1187px) / 2);
-  max-width: 104px;
-  max-height: 26px;
-}
-
-.header__buttons {
-  margin-right: calc((100vw - 1187px) / 2);
-}
-
-.header__button-users {
-  margin-left: 10px;
-}
-
-.header__button-signup {
-  margin-left: 6px;
-}
-
-.page {
-  background-color: #F8F8F8;
-}
-
-.desc {
-  position: relative;
-  max-width: 1170px;
-  height: 650px;
-  margin: 0 auto;
-}
-
-.desc__background {
-  position: absolute;
-  z-index: 0;
-  width: 100%;
-  background: linear-gradient(0deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(./images/background.jpeg);
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position-y: -47vw;
-  background-position-x: 51%;
-  height: 103vw;
-}
-
-.desc__info {
-  margin: 0 auto;
-  position: relative;
-  z-index: 1;
-  max-width: 380px;
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  text-align: center;
-}
-
-.desc__title {
-  margin: 0;
-  margin-top: 164px;
-  font-size: 40px;
-  line-height: 40px;
-  font-weight: 400;
-  color: white;
-}
-
-.desc__content {
-  margin: 0;
-  margin-top: 21px;
-  font-size: 16px;
-  font-weight: 400;
-  line-height: 26px;
-  color: white;
-}
-
-.desc__button-signup {
-  margin: 0 auto;
-  margin-top: 32px;
-}
-
-.contacts {
-  position: relative;
-  z-index: 1;
-  padding-top: 140px;
-  padding-bottom: 100px;
-  background-color: #F8F8F8;
-}
-
-.get {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  margin: 0 auto;
-}
-
-.get__title {
-  margin: 0;
-  margin-bottom: 50px;
-}
-
-.get__users {
-  list-style: none;
-}
-
-.get__more {
-  width: 120px;
-  margin: 0 auto;
-  margin-top: 30px;
-}
-
-.user {
-  max-width: 328px;
-  margin: 0 auto;
-  margin-bottom: 20px;
-  background-color: #FFFFFF;
-  border-radius: 10px;
-  color: rgba(0, 0, 0, 0.87);
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  text-align: center;
-}
-
-.user__avatar {
-  margin: 0 auto;
-  margin-top: 20px;
-  max-width: 70px;
-  border-radius: 50%;
-}
-
-.user__name {
-  font-style: normal;
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 26px;
-  margin-top: 20px;
-  margin-bottom: 20px;
-}
-
-.user__info {
-  margin: 0;
-  margin-bottom: 20px;
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 26px;
-  white-space: pre-line;
-}
-
-.post {
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-.post__title {
-  margin: 0;
-  margin-top: 140px;
-}
-
-.post__form {
-  max-width: 380px;
-  margin: 0 auto;
-}
-
-.form__input-list {
-  padding: 0;
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-.form__input {
-  margin: 0 auto;
-}
-
-.form__tel-tip {
-  margin-left: calc( 32px - ((360px - 328px) / 2));
-  margin-top: 4px;
-  font-weight: 400;
-  font-size: 12px;
-  line-height: 14px;
-  color: #7E7E7E;
-}
-
-.form__file-element {
-  display: flex;
-  margin-top: 50px;
-}
-
-.form__file-uploader {
-  width: 0;
-}
-
-.form__file-label {
-  padding: 17px 15px;
-  border: 1px solid rgba(0, 0, 0, 0.87);
-  box-sizing: border-box;
-  border-radius: 4px 0px 0px 4px;
-  
-}
-
-.form__preview {
-  width: calc(380px - 83px);
-  display: flex;
-  background-color: transparent;
-  border: 1px solid #D0CFCF;
-  box-sizing: border-box;
-  border-radius: 0px 4px 4px 0px;
-}
-
-.form__preview-text {
-  margin: auto auto auto 13px;
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 26px;
-  color: #7E7E7E;
-}
-
-.form__submit {
-  display: flex;
-  justify-content: center;
-  margin-top: 50px;
-}
-
-.position__title {
-  margin: 0;
-  margin-top: 25px;
-  margin-bottom: 13px;
-  color: rgba(0, 0, 0, 0.87);
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 26px;
-}
-
-.position__radios {
-  display: flex;
-  flex-direction: column;
-}
-
-.position__subject {
-  display: flex;
-  align-items: center;
-  margin-bottom: 13px;
-}
-
-.position__subject label {
-  color: rgba(0, 0, 0, 0.87);
-  font-weight: 400;
-  font-size: 16px;
-}
-
-.position__subject:last-of-type {
-  margin-bottom: 0;
-}
-
-.position__radio {
-  border: 0px;
-  width: 20px;
-  height: 20px;
-  margin-right: 12px;
-}
-
-@media screen and (max-width: 767px) {
-  .input {
-    width: 328px; /* 328px - default */
-    height: 54px;
-    margin-top: 50px;
-  }
-  
-  .header {
-    max-width: 360px;
-  }
-
-  .header__image {
-    margin-left: 16px;
-  }
-
-  .header__buttons {
-    margin-right: 16px;
-  }
-  
-  .desc {
-    height: 500px;
-  }
-
-  .get {
-    max-width: 328px;
-  }
-
-  .post {
-    max-width: 328px;
-  }
-
-  .desc__background {
-    /* There is something strange =\ */
-    background-position-y: -87vw;
-    background-position-x: 51%;
-    height: 226vw;
-  }
-
-  .desc__info {
-    max-width: 328px;
-  }
-
-  .desc__title {
-    margin-top: 40px;
-  }
-
-  .desc__content {
-    margin-top: 21px;
-  }
-  
-  .user {
-    max-width: 328px;
-  }
-
-  .form__tel-tip {
-    margin-left: calc( 32px - ((360px - 328px) / 2));
-    margin-top: 4px;
-  }
-
-  .form__preview {
-    width: calc(328px - 83px);
-  }
-}
-
-@media screen and (min-width: 768px) and (max-width: 1023px) {
-  
-  .header {
-    max-width: 1023px;
-  }
-
-  .header__image {
-    margin-left: 32px;
-  }
-
-  .header__buttons {
-    margin-right: 32px;
-  }
-
-  .desc__background {
-    /* There is something strange =\ */
-    background-position-y: -38vw;
-    background-position-x: 51%;
-    height: 103vw;
-  }
-
-  .desc__info {
-    max-width: 380px;
-  }
-
-  .desc__title {
-    margin-top: 89px;
-  }
-
-  .desc__content {
-    margin-top: 21px;
-  }
-  
-  .get {
-    max-width: 704px;
-  }
-
-  .post {
-    max-width: 704px;
-  }
-
-  .post__form {
-    max-width: 380px;
-    margin: 0 auto;
-  }
-
-  .form__tel-tip {
-    margin-left: calc( 32px - ((360px - 328px) / 2));
-    margin-top: 4px;
-  }
-
-  .form__preview {
-    width: calc(328px - 83px);
-  }
-}
-
-@media screen and (min-width: 1023px) and (max-width: 1169px) {
-
-  .header {
-    max-width: 1169px;
-  }
-
-  .header__image {
-    margin-left: 60px;
-  }
-
-  .header__buttons {
-    margin-right: 60px;
-  }
-
-  .desc__background {
-    /* There is something strange =\ */
-    background-position-y: -38vw;
-    background-position-x: 51%;
-    height: 103vw;
-  }
-  
-  .get {
-    max-width: 704px;
-  }
-
-  .post {
-    max-width: 704px;
-  }
-}
-
-@media screen and (min-width: 2500px) {
-  .desc__background {
-    background-position: 0;
-    background-size: cover;
-    height: 100%;
-  }
-}
+/* Independent elements */
+@import url("./blocks/button/button.css");
+@import url("./blocks/button/_disabled/button_disabled.css");
+@import url("./blocks/input/input.css");
+@import url("./blocks/title/title.css");
+
+/* Header */
+@import url("./blocks/header/header.css");
+@import url("./blocks/header/__image/header__image.css");
+@import url("./blocks/header/__buttons/header__buttons.css");
+@import url("./blocks/header/__button-signup/header__button-signup.css");
+@import url("./blocks/header/__button-users/header__button-users.css");
+
+/* Page */
+@import url("./blocks/page/page.css");
+
+/* Description */
+@import url("./blocks/desc/desc.css");
+@import url("./blocks/desc/__background/desc__background.css");
+@import url("./blocks/desc/__info/desc__info.css");
+@import url("./blocks/desc/__title/desc__title.css");
+@import url("./blocks/desc/__content/desc__content.css");
+@import url("./blocks/desc/__button-signup/desc__button-signup.css");
+
+/* Contacts */
+@import url("./blocks/contacts/contacts.css");
+
+/* Get Contacts */
+@import url("./blocks/get/get.css");
+@import url("./blocks/get/__title/get__title.css");
+@import url("./blocks/get/__users/get__users.css");
+@import url("./blocks/get/__more/get__more.css");
+
+/* User Card */
+@import url("./blocks/user/user.css");
+@import url("./blocks/user/__avatar/user__avatar.css");
+@import url("./blocks/user/__name/user__name.css");
+@import url("./blocks/user/__info/user__info.css");
+
+/* Post Contact */
+@import url("./blocks/post/post.css");
+@import url("./blocks/post/__title/post__title.css");
+@import url("./blocks/post/__form/post__form.css");
+
+/* Form */
+@import url("./blocks/form/__input-list/form__input-list.css");
+@import url("./blocks/form/__input/form__input.css");
+@import url("./blocks/form/__tel-tip/form__tel-tip.css");
+@import url("./blocks/form/__file-element/form__file-element.css");
+@import url("./blocks/form/__file-uploader/form__file-uploader.css");
+@import url("./blocks/form/__file-label/form__file-label.css");
+@import url("./blocks/form/__preview/form__preview.css");
+@import url("./blocks/form/__preview-text/form__preview-text.css");
+@import url("./blocks/form/__submit/form__submit.css");
+
+/* Position */
+@import url("./blocks/position/__title/position__title.css");
+@import url("./blocks/position/__radios/position__radios.css");
+@import url("./blocks/position/__subject/position__subject.css");
+@import url("./blocks/position/__radio/position__radio.css");

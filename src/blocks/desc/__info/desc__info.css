@@ -1,0 +1,16 @@
+.desc__info {
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+    max-width: 380px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+}
+
+@media screen and (max-width: 767px) {
+    .desc__info {
+        max-width: 328px;
+    }
+}

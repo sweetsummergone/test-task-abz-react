@@ -1,0 +1,14 @@
+.form__preview {
+    width: calc(380px - 83px);
+    display: flex;
+    background-color: transparent;
+    border: 1px solid #D0CFCF;
+    box-sizing: border-box;
+    border-radius: 0px 4px 4px 0px;
+}
+
+@media screen and (max-width: 1023px) {
+    .form__preview {
+        width: calc(328px - 83px);
+    }
+}

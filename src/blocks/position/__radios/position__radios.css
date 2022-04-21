@@ -1,0 +1,4 @@
+.position__radios {
+    display: flex;
+    flex-direction: column;
+}

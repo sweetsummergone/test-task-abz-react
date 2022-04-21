@@ -1,0 +1,12 @@
+.user {
+    max-width: 328px;
+    margin: 0 auto;
+    margin-bottom: 20px;
+    background-color: #FFFFFF;
+    border-radius: 10px;
+    color: rgba(0, 0, 0, 0.87);
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+}

@@ -1,0 +1,7 @@
+.form__input-list {
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
