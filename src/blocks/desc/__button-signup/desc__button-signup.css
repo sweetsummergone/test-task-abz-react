@@ -7,3 +7,8 @@
     text-align: center;
     text-decoration: none;
 }
+
+.desc__button-signup:link, .desc__button-signup:visited,
+.desc__button-signup:link:active, .desc__button-signup:visited:active {
+    color: black;
+}

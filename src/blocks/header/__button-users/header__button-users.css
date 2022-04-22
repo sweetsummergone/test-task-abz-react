@@ -6,3 +6,8 @@
     text-align: center;
     text-decoration: none;
 }
+
+.header__button-users:link, .header__button-users:visited,
+.header__button-users:link:active, .header__button-users:visited:active {
+    color: black;
+}

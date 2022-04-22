@@ -1,0 +1,7 @@
+.input_invalid {
+    border: 2px solid #CB3D40;
+}
+
+.input_invalid:last-child {
+    border-left: none;
+}

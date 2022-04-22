@@ -6,6 +6,7 @@
 @import url("./blocks/button/button.css");
 @import url("./blocks/button/_disabled/button_disabled.css");
 @import url("./blocks/input/input.css");
+@import url("./blocks/input/_invalid/input_invalid.css");
 @import url("./blocks/title/title.css");
 @import url("./blocks/preloader/preloader.css");
 
@@ -55,6 +56,8 @@
 @import url("./blocks/form/__file-element/form__file-element.css");
 @import url("./blocks/form/__file-uploader/form__file-uploader.css");
 @import url("./blocks/form/__file-label/form__file-label.css");
+@import url("./blocks/form/__file-label/_regular/form__file-label_regular.css");
+@import url("./blocks/form/__file-label/_invalid/form__file-label_invalid.css");
 @import url("./blocks/form/__preview/form__preview.css");
 @import url("./blocks/form/__submit/form__submit.css");
 

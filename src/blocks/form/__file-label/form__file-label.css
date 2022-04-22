@@ -1,8 +1,8 @@
 .form__file-label {
+    cursor: pointer;
     display: flex;
     align-items: center;
     padding: 15px 15px;
-    border: 1px solid rgba(0, 0, 0, 0.87);
     box-sizing: border-box;
     border-radius: 4px 0px 0px 4px;
 }

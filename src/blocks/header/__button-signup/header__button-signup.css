@@ -6,3 +6,8 @@
     text-align: center;
     text-decoration: none;
 }
+
+.header__button-signup:link, .header__button-signup:visited,
+.header__button-signup:link:active, .header__button-signup:visited:active {
+    color: black;
+}

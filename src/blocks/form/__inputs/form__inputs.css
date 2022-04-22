@@ -30,3 +30,7 @@
     padding-left: 4px;
     padding-right: 4px;
 }
+
+.form__inputs input:focus:invalid + span {
+    color: #CB3D40;
+}
