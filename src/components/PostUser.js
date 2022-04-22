@@ -3,9 +3,20 @@ export default function PostUser() {
         <div className="post" id="post">
             <h2 className="title post__title">Working with POST request</h2>
             <form className="form post__form" action="submit">
-                <input type="text" name="name" className="input" placeholder="Your name" required />
-                <input type="email" name="email" className="input" placeholder="Email" required />
-                <input type="tel" name="phone" className="input" placeholder="Phone" pattern="+38 ([0-9]{3})-[0-9]{3}-[0-9]{2}-[0-9]{2}" required />
+                <div className="form__inputs">
+                    <label htmlFor="name">
+                        <input type="text" name="name" id="name" className="input" placeholder="Your name" required />
+                        <span>Your name</span>
+                    </label>
+                    <label htmlFor="email">
+                        <input type="email" name="email" id="email" className="input" placeholder="Email" required />
+                        <span>Email</span>
+                    </label>
+                    <label htmlFor="phone">
+                        <input type="tel" name="phone" id="phone" className="input" placeholder="Phone" pattern="+38 ([0-9]{3})-[0-9]{3}-[0-9]{2}-[0-9]{2}" required />
+                        <span>Phone</span>
+                    </label>
+                </div>
                 <p className="form__tel-tip">+38 (XXX) XXX - XX - XX</p>
                 <div className="position form__position">
                     <p className="position__title">
@@ -21,9 +32,7 @@ export default function PostUser() {
                 <div className="form__file-element">
                     <label className="form__file-label" htmlFor="image_uploads">Upload</label>
                     <input type="file" className="form__file-uploader" id="image_uploads" name="image_uploads" accept=".jpg, .jpeg, .png"/>
-                    <div className="form__preview">
-                        <p className="form__preview-text">Upload your photo</p>
-                    </div>
+                    <input type="text" name="file-text" className="input form__preview" placeholder="Upload your photo" readOnly />
                 </div>
                 <div className="form__submit">
                     <input type="submit" className="button button_disabled form__submit-button" value="Sign up" />
