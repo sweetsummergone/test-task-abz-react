@@ -2,106 +2,68 @@ import Input from "./Input";
 import FileUploader from "./FileUploader";
 import PositionRadio from "./PositionRadio";
 import React from "react";
+import userReducer from "../reducers/usersReducer";
+import success from "../images/success-image.svg";
+import preloader from "../images/Preloader.svg";
+import { validateForm } from "../utils/formValidator";
+import { getUsers, getToken, postUser } from "../utils/api";
 
 export default function PostUser() {
     const [errors, setErrors] = React.useState({});
     const [fields, setFields] = React.useState({});
     const [isValid, setIsValid] = React.useState(false);
-    const [isImageLoaded, setIsImageLoaded] = React.useState(true);
     const [fileName, setFileName] = React.useState("");
+    const [isSent, setIsSent] = React.useState(false);
+    const [isLoading, setIsLoading] = React.useState(false);
+    const [users, dispatch] = React.useReducer(userReducer, []);
 
     function handleValidation() {
-        let newErrors = {};
-        let formIsValid = true;
-        let currentFields = {...fields};
-
-        // Name
-        if (!currentFields["name"]) {
-            formIsValid = false;
-            newErrors["name"] = "Cannot be empty";
-        }
-    
-        if (typeof currentFields["name"] !== "undefined") {
-            if (!currentFields["name"].match(/^[a-zA-Z]+$/)) {
-                formIsValid = false;
-                newErrors["name"] = "Only letters";
-            }
-        }
-    
-        // Email
-        if (!currentFields["email"]) {
-            formIsValid = false;
-            newErrors["email"] = "Cannot be empty";
-        }
-    
-        if (typeof currentFields["email"] !== "undefined") {
-            let lastAtPos = currentFields["email"].lastIndexOf("@");
-            let lastDotPos = currentFields["email"].lastIndexOf(".");
-    
-            if (
-                !(
-                lastAtPos < lastDotPos &&
-                lastAtPos > 0 &&
-                currentFields["email"].indexOf("@@") === -1 &&
-                lastDotPos > 2 &&
-                currentFields["email"].length - lastDotPos > 2
-                )
-            ) {
-                formIsValid = false;
-                newErrors["email"] = "Email is not valid";
-            }
-        }
-
-        // Tel
-        if (!currentFields["tel"]) {
-            formIsValid = false;
-            newErrors["tel"] = "Cannot be empty";
-        }
-
-        if (typeof currentFields["tel"] !== "undefined") {
-            if (!currentFields["tel"].match(/(^\+38)[0-9]{10}$/)) {
-                console.log(currentFields["tel"]);
-                formIsValid = false;
-                newErrors["tel"] = "+38 (XXX) XXX - XX - XX";
-            }
-        }
-
-        // Avatar
-        if (!isImageLoaded) {
-            formIsValid = false;
-            newErrors["avatar"] = "Invalid type of file. Image required."
-        }
-
+        const [formIsValid, newErrors] = validateForm(fields);
         setErrors(newErrors);
         setIsValid(formIsValid);
     }
 
     function handleChange(field, e) {
         let newFields = {...fields};
-        newFields[field] = e.target.value;
+        if (field !== "avatar") {
+            newFields[field] = e.target.value;
+        } else {
+            newFields[field] = e.target.files[0];
+            setFileName(`${e.target.files[0].name}`);
+        }
         setFields(newFields);
     }
 
-    function handleAvatarChange(file) {
-        const fileTypes = [
-            "image/apng",
-            "image/bmp",
-            "image/gif",
-            "image/jpeg",
-            "image/pjpeg",
-            "image/png",
-            "image/svg+xml",
-            "image/tiff",
-            "image/webp",
-            "image/x-icon"
-        ];
-
-        validFileType(file) ? setIsImageLoaded(true) : setIsImageLoaded(false);
-        handleValidation();
-        setFileName(`${file.name}`);
-
-        function validFileType(file) {
-            return fileTypes.includes(file.type);
+    function formPostUser() {
+        if (isValid) {
+            getToken()
+                .then(res => {
+                    return res;
+                })
+                .then(token => {
+                    let user = new FormData();
+                    user.append("position_id", 1); // Temponary to check POST query
+                    user.append("name", fields.name);
+                    user.append("email", fields.email);
+                    user.append("phone", fields.phone);
+                    user.append("photo", fields.avatar);
+                    return postUser(token, user);
+                })
+                .then(() => {
+                    getUsers()
+                    .then(res => {
+                        dispatch({type: "POST", users: res.users});
+                        console.log(users);
+                        setIsLoading(false);
+                    })
+                    .catch(err => {
+                        console.error(err);
+                    });
+                })
+                .catch(err => {
+                    console.error(err);
+                });
+            
         }
     }
 
@@ -110,16 +72,13 @@ export default function PostUser() {
 
         function handleSubmit(e) {
             e.preventDefault();
-            if (isValid) {
-                console.log("Form submitted");
-            } else {
-                console.log("Form has errors.");
-            }
+            setIsLoading(true);
+            setIsSent(true);
         }
 
         form.addEventListener("submit", e => {
             handleSubmit(e);
-        })
+        });
 
         return () => {
             form.removeEventListener("submit", e => {
@@ -130,37 +89,56 @@ export default function PostUser() {
 
     React.useEffect(() => {
         handleValidation();
-    }, [fields]);
+    }, [fields, isValid]);
 
-    return (
-        <div className="post" id="post">
-            <h2 className="title post__title">Working with POST request</h2>
-            <form className="form post__form" action="submit" noValidate>
-                <div className="form__inputs">
-                    <Input name="name" type="text" text="Your name" error={errors.name} maxLength={32} handleChange={e => {handleChange("name", e)}}/>
-                    <Input name="email" type="email" text="Email" error={errors.email} maxLength={32} handleChange={e => {handleChange("email", e)}}/>
-                    <Input name="phone" type="tel" text="Phone" error={errors.tel} tip="+38 (XXX) XXX - XX - XX" maxLength={13} handleChange={e => {handleChange("tel", e)}}/>
-                </div>
-                <div className="position form__position">
-                    <p className="position__title">
-                        Select your position
-                    </p>
-                    <div className="position__radios">
-                        <PositionRadio id="frontend" name="Frontend developer" checked />
-                        <PositionRadio id="backend" name="Backend developer" />
-                        <PositionRadio id="designer" name="Designer" />
-                        <PositionRadio id="qa" name="QA" />
+    React.useEffect(() => {
+        formPostUser();
+    }, [isSent]);
+
+    if (!isSent && !isLoading) {
+        return (
+            <div className="post" id="post">
+                <h2 className="title post__title">Working with POST request</h2>
+                <form className="form post__form" action="submit" noValidate>
+                    <div className="form__inputs">
+                        <Input name="name" type="text" text="Your name" error={errors.name} minLength={2} maxLength={32} handleChange={e => {handleChange("name", e)}}/>
+                        <Input name="email" type="email" text="Email" error={errors.email} maxLength={32} handleChange={e => {handleChange("email", e)}}/>
+                        <Input name="phone" type="tel" text="Phone" error={errors.phone} tip="+38 (XXX) XXX - XX - XX" maxLength={13} handleChange={e => {handleChange("phone", e)}}/>
                     </div>
-                </div>
-                <FileUploader handleAvatarChange={handleAvatarChange} error={errors.avatar} fileName={fileName}/>
-                <div className="form__submit">
-                    {
-                        Object.keys(errors).length !== 0 || !isValid
-                        ? (<input type="submit" className="button button_disabled form__submit-button" value="Sign up" />)
-                        : (<input type="submit" className="button form__submit-button" value="Sign up"/>)
-                    }
-                </div>
-            </form>
-        </div>
-    )
+                    <div className="position form__position">
+                        <p className="position__title">
+                            Select your position
+                        </p>
+                        <div className="position__radios">
+                            <PositionRadio id="frontend" name="Frontend developer" checked />
+                            <PositionRadio id="backend" name="Backend developer" />
+                            <PositionRadio id="designer" name="Designer" />
+                            <PositionRadio id="qa" name="QA" />
+                        </div>
+                    </div>
+                    <FileUploader handleChange={e => {handleChange("avatar", e)}} error={errors.avatar} fileName={fileName}/>
+                    <div className="form__submit">
+                        {
+                            Object.keys(errors).length !== 0 || !isValid
+                            ? (<input type="button" className="button button_disabled form__submit-button" value="Sign up" />)
+                            : (<input type="submit" className="button form__submit-button" value="Sign up"/>)
+                        }
+                    </div>
+                </form>
+            </div>
+        )
+    } else if (isSent && !isLoading) {
+        return (
+            <div className="post" id="post">
+                <h2 className="title post__title">User successfully registered</h2>
+                <img className="post__image" src={success} alt="Success form submit image" />
+            </div>
+        )
+    } else {
+        return (
+            <div className="post" id="post">
+                <img src={preloader} className="preloader"></img>
+            </div>
+        )
+    }
 }

@@ -1,11 +1,12 @@
 import React from "react";
 import User from "./User";
 import preloader from "../images/Preloader.svg";
+import userReducer from "../reducers/usersReducer";
 
 import { getUsers } from "../utils/api";
 
 export default function GetUsers() {
-    const [users, setUsers] = React.useState([]);
+    const [users, dispatch] = React.useReducer(userReducer, []);
     const [pageLimit, setPageLimit] = React.useState(0);
     const [page, setPage] = React.useState(1);
     const [buttonClasses, setButtonClasses] = React.useState(["button", "get__more"]);
@@ -15,19 +16,19 @@ export default function GetUsers() {
         if (page !== pageLimit) {
             setIsLoading(true);
             getUsers(page + 1)
-            .then(res => {
-                const newUserList = [...users];
-                newUserList.push(res.users);
-                setUsers(newUserList.flat());
-                setPage(page + 1);
-                setIsLoading(false);
-                if (page === pageLimit - 1) {
-                    setButtonClasses([...buttonClasses, "button_disabled"]);
-                }
-            })
-            .catch(err => {
-                console.error(err);
-            });
+                .then(res => {
+                    const newUserList = [...users];
+                    newUserList.push(res.users);
+                    dispatch({type: "GET", users: newUserList.flat()})
+                    setPage(page + 1);
+                    setIsLoading(false);
+                    if (page === pageLimit - 1) {
+                        setButtonClasses([...buttonClasses, "button_disabled"]);
+                    }
+                })
+                .catch(err => {
+                    console.error(err);
+                });
         }
     }
 
@@ -35,7 +36,7 @@ export default function GetUsers() {
         setIsLoading(true);
         getUsers()
             .then(res => {
-                setUsers(res.users);
+                dispatch({type: "INIT", users: res.users})
                 setPageLimit(res.total_pages);
                 setIsLoading(false);
             })
