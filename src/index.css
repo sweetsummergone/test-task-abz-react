@@ -33,7 +33,6 @@
 @import url("./blocks/get/get.css");
 @import url("./blocks/get/__title/get__title.css");
 @import url("./blocks/get/__users/get__users.css");
-@import url("./blocks/get/__users/_user/get__users_user.css");
 @import url("./blocks/get/__more/get__more.css");
 
 /* User Card */
