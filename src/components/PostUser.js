@@ -59,7 +59,8 @@ export default function PostUser() {
         }
 
         if (typeof currentFields["tel"] !== "undefined") {
-            if (!currentFields["tel"].match(/^(\+38)[0-9]+$/)) {
+            if (!currentFields["tel"].match(/(^\+38)[0-9]{10}$/)) {
+                console.log(currentFields["tel"]);
                 formIsValid = false;
                 newErrors["tel"] = "+38 (XXX) XXX - XX - XX";
             }
@@ -96,6 +97,7 @@ export default function PostUser() {
         ];
 
         validFileType(file) ? setIsImageLoaded(true) : setIsImageLoaded(false);
+        handleValidation();
         setFileName(`${file.name}`);
 
         function validFileType(file) {
@@ -126,14 +128,18 @@ export default function PostUser() {
         }
     }, []);
 
+    React.useEffect(() => {
+        handleValidation();
+    }, [fields]);
+
     return (
         <div className="post" id="post">
             <h2 className="title post__title">Working with POST request</h2>
             <form className="form post__form" action="submit" noValidate>
                 <div className="form__inputs">
-                    <Input name="name" type="text" text="Your name" error={errors.name} handleChange={e => {handleChange("name", e)}}/>
-                    <Input name="email" type="email" text="Email" error={errors.email} handleChange={e => {handleChange("email", e)}}/>
-                    <Input name="phone" type="tel" text="Phone" error={errors.tel} tip="+38 (XXX) XXX - XX - XX" handleChange={e => {handleChange("tel", e)}}/>
+                    <Input name="name" type="text" text="Your name" error={errors.name} maxLength={32} handleChange={e => {handleChange("name", e)}}/>
+                    <Input name="email" type="email" text="Email" error={errors.email} maxLength={32} handleChange={e => {handleChange("email", e)}}/>
+                    <Input name="phone" type="tel" text="Phone" error={errors.tel} tip="+38 (XXX) XXX - XX - XX" maxLength={13} handleChange={e => {handleChange("tel", e)}}/>
                 </div>
                 <div className="position form__position">
                     <p className="position__title">
@@ -148,7 +154,11 @@ export default function PostUser() {
                 </div>
                 <FileUploader handleAvatarChange={handleAvatarChange} error={errors.avatar} fileName={fileName}/>
                 <div className="form__submit">
-                    <input type="submit" className="button button_disabled form__submit-button" value="Sign up" onClick={handleValidation}/>
+                    {
+                        Object.keys(errors).length !== 0 || !isValid
+                        ? (<input type="submit" className="button button_disabled form__submit-button" value="Sign up" />)
+                        : (<input type="submit" className="button form__submit-button" value="Sign up"/>)
+                    }
                 </div>
             </form>
         </div>
