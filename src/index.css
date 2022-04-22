@@ -52,7 +52,7 @@
 @import url("./blocks/form/__inputs/form__inputs.css");
 @import url("./blocks/form/__input-list/form__input-list.css");
 @import url("./blocks/form/__input/form__input.css");
-@import url("./blocks/form/__tel-tip/form__tel-tip.css");
+@import url("./blocks/form/__error/form__error.css");
 @import url("./blocks/form/__file-element/form__file-element.css");
 @import url("./blocks/form/__file-uploader/form__file-uploader.css");
 @import url("./blocks/form/__file-label/form__file-label.css");

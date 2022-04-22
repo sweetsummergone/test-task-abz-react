@@ -1,8 +1,10 @@
-.form__tel-tip {
+.form__error {
+    height: 14px;
+    margin: 0;
     margin-left: calc( 32px - ((360px - 328px) / 2));
     margin-top: 4px;
     font-weight: 400;
     font-size: 12px;
     line-height: 14px;
-    color: #7E7E7E;
+    color: #CB3D40;
 }

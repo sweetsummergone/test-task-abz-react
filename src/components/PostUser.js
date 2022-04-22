@@ -1,18 +1,110 @@
 import Input from "./Input";
 import FileUploader from "./FileUploader";
 import PositionRadio from "./PositionRadio";
+import React from "react";
 
 export default function PostUser() {
+    const [errors, setErrors] = React.useState({});
+    const [fields, setFields] = React.useState({});
+    const [isValid, setIsValid] = React.useState(false);
+
+    function handleValidation() {
+        let newErrors = {};
+        let formIsValid = true;
+        let currentFields = {...fields};
+
+        // Name
+        if (!currentFields["name"]) {
+            formIsValid = false;
+            newErrors["name"] = "Cannot be empty";
+        }
+    
+        if (typeof currentFields["name"] !== "undefined") {
+            if (!currentFields["name"].match(/^[a-zA-Z]+$/)) {
+                formIsValid = false;
+                newErrors["name"] = "Only letters";
+            }
+        }
+    
+        // Email
+        if (!currentFields["email"]) {
+            formIsValid = false;
+            newErrors["email"] = "Cannot be empty";
+        }
+    
+        if (typeof currentFields["email"] !== "undefined") {
+            let lastAtPos = currentFields["email"].lastIndexOf("@");
+            let lastDotPos = currentFields["email"].lastIndexOf(".");
+    
+            if (
+                !(
+                lastAtPos < lastDotPos &&
+                lastAtPos > 0 &&
+                currentFields["email"].indexOf("@@") === -1 &&
+                lastDotPos > 2 &&
+                currentFields["email"].length - lastDotPos > 2
+                )
+            ) {
+                formIsValid = false;
+                newErrors["email"] = "Email is not valid";
+            }
+        }
+
+        // Tel
+        if (!currentFields["tel"]) {
+            formIsValid = false;
+            newErrors["tel"] = "Cannot be empty";
+        }
+
+        if (typeof currentFields["tel"] !== "undefined") {
+            if (!currentFields["tel"].match(/^(\+38)[0-9]+$/)) {
+                formIsValid = false;
+                newErrors["tel"] = "+38 (XXX) XXX - XX - XX";
+            }
+        }
+
+        setErrors(newErrors);
+        setIsValid(formIsValid);
+    }
+
+    function handleChange(field, e) {
+        let newFields = {...fields};
+        newFields[field] = e.target.value;
+        setFields(newFields);
+    }
+
+    React.useEffect(() => {
+        const form = document.querySelector(".post__form");
+
+        function handleSubmit(e) {
+            e.preventDefault();
+            if (isValid) {
+                console.log("Form submitted");
+            } else {
+                console.log("Form has errors.");
+            }
+        }
+
+        form.addEventListener("submit", e => {
+            handleSubmit(e);
+        })
+
+        return () => {
+            form.removeEventListener("submit", e => {
+                handleSubmit(e);
+            })
+        }
+    }, []);
+
     return (
         <div className="post" id="post">
             <h2 className="title post__title">Working with POST request</h2>
-            <form className="form post__form" action="submit">
+            <form className="form post__form" action="submit" noValidate>
                 <div className="form__inputs">
-                    <Input name="name" type="text" text="Your name"/>
-                    <Input name="email" type="email" text="Email"/>
-                    <Input name="phone" type="tel" text="Phone"/>
+                    <Input name="name" type="text" text="Your name" error={errors.name} handleChange={e => {handleChange("name", e)}}/>
+                    <Input name="email" type="email" text="Email" error={errors.email} handleChange={e => {handleChange("email", e)}}/>
+                    <Input name="phone" type="tel" text="Phone" error={errors.tel} handleChange={e => {handleChange("tel", e)}}/>
                 </div>
-                <p className="form__tel-tip">+38 (XXX) XXX - XX - XX</p>
                 <div className="position form__position">
                     <p className="position__title">
                         Select your position
@@ -26,7 +118,7 @@ export default function PostUser() {
                 </div>
                 <FileUploader />
                 <div className="form__submit">
-                    <input type="submit" className="button button_disabled form__submit-button" value="Sign up" />
+                    <input type="submit" className="button button_disabled form__submit-button" value="Sign up" onClick={handleValidation}/>
                 </div>
             </form>
         </div>
