@@ -7,6 +7,8 @@ export default function PostUser() {
     const [errors, setErrors] = React.useState({});
     const [fields, setFields] = React.useState({});
     const [isValid, setIsValid] = React.useState(false);
+    const [isImageLoaded, setIsImageLoaded] = React.useState(true);
+    const [fileName, setFileName] = React.useState("");
 
     function handleValidation() {
         let newErrors = {};
@@ -63,6 +65,12 @@ export default function PostUser() {
             }
         }
 
+        // Avatar
+        if (!isImageLoaded) {
+            formIsValid = false;
+            newErrors["avatar"] = "Invalid type of file. Image required."
+        }
+
         setErrors(newErrors);
         setIsValid(formIsValid);
     }
@@ -71,6 +79,28 @@ export default function PostUser() {
         let newFields = {...fields};
         newFields[field] = e.target.value;
         setFields(newFields);
+    }
+
+    function handleAvatarChange(file) {
+        const fileTypes = [
+            "image/apng",
+            "image/bmp",
+            "image/gif",
+            "image/jpeg",
+            "image/pjpeg",
+            "image/png",
+            "image/svg+xml",
+            "image/tiff",
+            "image/webp",
+            "image/x-icon"
+        ];
+
+        validFileType(file) ? setIsImageLoaded(true) : setIsImageLoaded(false);
+        setFileName(`${file.name}`);
+
+        function validFileType(file) {
+            return fileTypes.includes(file.type);
+        }
     }
 
     React.useEffect(() => {
@@ -103,7 +133,7 @@ export default function PostUser() {
                 <div className="form__inputs">
                     <Input name="name" type="text" text="Your name" error={errors.name} handleChange={e => {handleChange("name", e)}}/>
                     <Input name="email" type="email" text="Email" error={errors.email} handleChange={e => {handleChange("email", e)}}/>
-                    <Input name="phone" type="tel" text="Phone" error={errors.tel} handleChange={e => {handleChange("tel", e)}}/>
+                    <Input name="phone" type="tel" text="Phone" error={errors.tel} tip="+38 (XXX) XXX - XX - XX" handleChange={e => {handleChange("tel", e)}}/>
                 </div>
                 <div className="position form__position">
                     <p className="position__title">
@@ -116,7 +146,7 @@ export default function PostUser() {
                         <PositionRadio id="qa" name="QA" />
                     </div>
                 </div>
-                <FileUploader />
+                <FileUploader handleAvatarChange={handleAvatarChange} error={errors.avatar} fileName={fileName}/>
                 <div className="form__submit">
                     <input type="submit" className="button button_disabled form__submit-button" value="Sign up" onClick={handleValidation}/>
                 </div>
