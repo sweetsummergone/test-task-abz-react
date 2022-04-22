@@ -1,0 +1,20 @@
+{
+  "files": {
+    "main.css": "/sweetsummergone.github.io/static/css/main.ce499e0e.css",
+    "main.js": "/sweetsummergone.github.io/static/js/main.a7e091a6.js",
+    "static/js/787.3db5563a.chunk.js": "/sweetsummergone.github.io/static/js/787.3db5563a.chunk.js",
+    "static/media/background.jpeg": "/sweetsummergone.github.io/static/media/background.be7665f876bbd9138501.jpeg",
+    "static/media/Nunito-Regular.ttf": "/sweetsummergone.github.io/static/media/Nunito-Regular.fd0c54f3619265ac2f1e.ttf",
+    "static/media/success-image.svg": "/sweetsummergone.github.io/static/media/success-image.0d3202ba11b04fa7364b0f83ce42aea5.svg",
+    "static/media/Logo.svg": "/sweetsummergone.github.io/static/media/Logo.8bb55362d01d55393ccc5476d96f0c14.svg",
+    "static/media/Preloader.svg": "/sweetsummergone.github.io/static/media/Preloader.0aaf07f39acaa32ce036564ce35dba88.svg",
+    "index.html": "/sweetsummergone.github.io/index.html",
+    "main.ce499e0e.css.map": "/sweetsummergone.github.io/static/css/main.ce499e0e.css.map",
+    "main.a7e091a6.js.map": "/sweetsummergone.github.io/static/js/main.a7e091a6.js.map",
+    "787.3db5563a.chunk.js.map": "/sweetsummergone.github.io/static/js/787.3db5563a.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.ce499e0e.css",
+    "static/js/main.a7e091a6.js"
+  ]
+}
