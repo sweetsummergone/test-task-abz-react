@@ -2,11 +2,13 @@ import Input from "./Input";
 import FileUploader from "./FileUploader";
 import PositionRadio from "./PositionRadio";
 import React from "react";
-import userReducer from "../reducers/usersReducer";
 import success from "../images/success-image.svg";
 import preloader from "../images/Preloader.svg";
 import { validateForm } from "../utils/formValidator";
 import { getUsers, getToken, postUser } from "../utils/api";
+// Redux
+import { useSelector, useDispatch } from 'react-redux'
+import { init } from '../features/users/usersSlice'
 
 export default function PostUser() {
     const [errors, setErrors] = React.useState({});
@@ -15,7 +17,9 @@ export default function PostUser() {
     const [fileName, setFileName] = React.useState("");
     const [isSent, setIsSent] = React.useState(false);
     const [isLoading, setIsLoading] = React.useState(false);
-    const [users, dispatch] = React.useReducer(userReducer, []);
+
+    const users = useSelector(state => state.users.value);
+    const dispatch = useDispatch();
 
     function handleValidation() {
         const [formIsValid, newErrors] = validateForm(fields);
@@ -52,8 +56,7 @@ export default function PostUser() {
                 .then(() => {
                     getUsers()
                     .then(res => {
-                        dispatch({type: "POST", users: res.users});
-                        console.log(users);
+                        dispatch(init(res.users));
                         setIsLoading(false);
                     })
                     .catch(err => {

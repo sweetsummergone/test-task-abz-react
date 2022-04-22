@@ -1,25 +1,29 @@
 import React from "react";
 import User from "./User";
 import preloader from "../images/Preloader.svg";
-import userReducer from "../reducers/usersReducer";
-
+// Redux
+import { useSelector, useDispatch } from 'react-redux'
+import { get, init } from '../features/users/usersSlice'
+// Utils
 import { getUsers } from "../utils/api";
 
 export default function GetUsers() {
-    const [users, dispatch] = React.useReducer(userReducer, []);
     const [pageLimit, setPageLimit] = React.useState(0);
     const [page, setPage] = React.useState(1);
     const [buttonClasses, setButtonClasses] = React.useState(["button", "get__more"]);
     const [isLoading, setIsLoading] = React.useState(false);
+
+    const users = useSelector(state => state.users.value);
+    const dispatch = useDispatch();
 
     function showMore() {
         if (page !== pageLimit) {
             setIsLoading(true);
             getUsers(page + 1)
                 .then(res => {
-                    const newUserList = [...users];
-                    newUserList.push(res.users);
-                    dispatch({type: "GET", users: newUserList.flat()})
+                    // const newUserList = [...users];
+                    // newUserList.push(res.users);
+                    dispatch(get(res.users));
                     setPage(page + 1);
                     setIsLoading(false);
                     if (page === pageLimit - 1) {
@@ -36,7 +40,7 @@ export default function GetUsers() {
         setIsLoading(true);
         getUsers()
             .then(res => {
-                dispatch({type: "INIT", users: res.users})
+                dispatch(init(res.users))
                 setPageLimit(res.total_pages);
                 setIsLoading(false);
             })
