@@ -1,0 +1,29 @@
+.preloader {
+    margin: 0 auto;
+    margin-top: 34px;
+    max-width: 32px;
+	-webkit-animation: rotate 0.4s cubic-bezier(0.250, 0.460, 0.450, 0.940) both infinite;
+	        animation: rotate 0.4s cubic-bezier(0.250, 0.460, 0.450, 0.940) both infinite;
+}
+
+@-webkit-keyframes rotate {
+    0% {
+      -webkit-transform: rotate(0);
+              transform: rotate(0);
+    }
+    100% {
+      -webkit-transform: rotate(360deg);
+              transform: rotate(360deg);
+    }
+}
+
+@keyframes rotate {
+    0% {
+      -webkit-transform: rotate(0);
+              transform: rotate(0);
+    }
+    100% {
+      -webkit-transform: rotate(360deg);
+              transform: rotate(360deg);
+    }
+}

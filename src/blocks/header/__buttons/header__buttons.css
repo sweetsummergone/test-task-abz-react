@@ -1,4 +1,5 @@
 .header__buttons {
+    display: flex;
     margin-right: calc((100vw - 1187px) / 2);
 }
 

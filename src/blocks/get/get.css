@@ -3,23 +3,23 @@
     flex-direction: column;
     justify-content: center;
     margin: 0 auto;
-    max-width: 704px;
+    max-width: calc(370px * 3 + 29px * 2);
 }
 
-@media screen and (max-width: 360px) {
+@media screen and (max-width: 1024px) {
     .get {
-        max-width: 328px;
+        max-width: calc(282px * 3 + 29px * 2);
     }
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (max-width: 768px) {
     .get {
         max-width: calc(344px * 2 + 16px);
     }
 }
 
-@media screen and (min-width: 1024px) {
+@media screen and (max-width: 360px) {
     .get {
-        max-width: calc(282px * 3 + 29px * 2);
+        max-width: 328px;
     }
 }

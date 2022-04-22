@@ -1,6 +1,7 @@
 .get__users {
+    max-width: calc(370px * 3 + 29px * 2);
     display: flex;
-    justify-content: space-between;
+    margin: 0 auto;
     row-gap: 29px;
     column-gap: 29px;
     flex-flow: row wrap;
@@ -8,16 +9,15 @@
     padding: 0;
 }
 
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 1280px) {
     .get__users {
-        row-gap: 20px;
-        justify-content: center;
+        max-width: calc(282px * 2 + 29px);
     }
 }
 
-@media screen and (min-width: 1024px) {
-    .get__users::after {
-        content: "";
-        flex: auto;
+@media screen and (max-width: 767px) {
+    .get__users {
+        row-gap: 20px;
+        max-width: 282px;
     }
 }

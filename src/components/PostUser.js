@@ -1,6 +1,6 @@
 export default function PostUser() {
     return (
-        <div className="post">
+        <div className="post" id="post">
             <h2 className="title post__title">Working with POST request</h2>
             <form className="form post__form" action="submit">
                 <input type="text" name="name" className="input" placeholder="Your name" required />
