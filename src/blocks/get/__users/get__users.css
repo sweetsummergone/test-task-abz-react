@@ -1,3 +1,15 @@
 .get__users {
+    display: flex;
+    row-gap: 29px;
+    column-gap: 29px;
+    justify-content: center;
+    flex-wrap: wrap;
     list-style: none;
+    padding: 0;
+}
+
+@media screen and (max-width: 767px) {
+    .get__users {
+        row-gap: 20px;
+    }
 }

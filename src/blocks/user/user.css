@@ -1,7 +1,6 @@
 .user {
-    max-width: 328px;
+    width: 370px;
     margin: 0 auto;
-    margin-bottom: 20px;
     background-color: #FFFFFF;
     border-radius: 10px;
     color: rgba(0, 0, 0, 0.87);
@@ -9,4 +8,22 @@
     justify-content: center;
     flex-direction: column;
     text-align: center;
+}
+
+@media screen and (max-width: 360px) {
+    .user {
+        width: 328px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .user {
+        width: 344px;
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    .user {
+        width: 282px;
+    }
 }

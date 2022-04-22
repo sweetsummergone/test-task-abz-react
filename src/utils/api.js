@@ -1,14 +1,15 @@
-fetch('https://frontend-test-assignment-api.abz.agency/api/v1/users?page=1&count=5') 
-    .then(res => { 
-        return res.json(); 
-    }) 
-    .then(data => { 
-        console.log(data); 
-        if (data.success) {
-            console.log("cool");
-        }
-    });
-                
+export function getUsers(page = 1) {
+    return fetch(`https://frontend-test-assignment-api.abz.agency/api/v1/users?page=${page}&count=6`)
+        .then(res => { 
+            return res.json(); 
+        }) 
+        .then(data => { 
+            return data;
+        })
+        .catch(err => {
+            console.err(err);
+        });
+}
 
 /* 
 
