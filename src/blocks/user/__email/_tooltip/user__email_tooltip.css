@@ -1,4 +1,7 @@
 .user__email_tooltip {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden; 
     visibility: hidden;
     width: auto;
     background-color: rgba(0,0,0,0.87);
@@ -14,4 +17,10 @@
 
 .user__email:hover .user__email_tooltip {
     visibility: visible;
+}
+
+@media screen and (max-width: 768px) {
+    .user__email_tooltip {
+        max-width: 140px;
+    }
 }
