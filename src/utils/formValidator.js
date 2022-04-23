@@ -54,6 +54,11 @@ export function validateForm(fields) {
     }
 
     // Avatar
+    if (!currentFields["avatar"]) {
+        formIsValid = false;
+        errors["avatar"] = "You should load JPEG/JPG avatar to continue";
+    }
+
     if (typeof currentFields["avatar"] !== "undefined") {
         if (currentFields["avatar"].type !== "image/jpeg") {
             formIsValid = false;

@@ -1,0 +1,17 @@
+.user__email_tooltip {
+    visibility: hidden;
+    width: auto;
+    background-color: rgba(0,0,0,0.87);
+    color: #fff;
+    text-align: center;
+    padding: 3px 16px;
+    border-radius: 4px;
+    top: 100%;
+    left: 50%;
+    position: absolute;
+    z-index: 1;
+}
+
+.user__email:hover .user__email_tooltip {
+    visibility: visible;
+}

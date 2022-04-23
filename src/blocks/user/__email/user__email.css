@@ -1,0 +1,10 @@
+.user__email {
+    position: relative;
+    display: inline-block;
+}
+
+.user__email:link, .user__email:visited,
+.user__email:link:active, .user__email:visited:active {
+    color: rgba(0, 0, 0, 0.87);
+    text-decoration: none;
+}

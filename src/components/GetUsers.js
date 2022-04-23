@@ -3,26 +3,29 @@ import User from "./User";
 import preloader from "../images/Preloader.svg";
 // Redux
 import { useSelector, useDispatch } from 'react-redux'
-import { get, init } from '../features/users/usersSlice'
+import { get, init, addPage } from '../features/users/usersSlice'
 // Utils
 import { getUsers } from "../utils/api";
 
 export default function GetUsers() {
     const [pageLimit, setPageLimit] = React.useState(0);
-    const [page, setPage] = React.useState(1);
     const [buttonClasses, setButtonClasses] = React.useState(["button", "get__more"]);
     const [isLoading, setIsLoading] = React.useState(false);
 
     const users = useSelector(state => state.users.value);
+    const page = useSelector(state => state.users.page);
     const dispatch = useDispatch();
 
     function showMore() {
-        if (page !== pageLimit) {
+        dispatch(addPage());
+    }
+
+    React.useEffect(() => {
+        if (page !== pageLimit && page !== 1) {
             setIsLoading(true);
-            getUsers(page + 1)
+            getUsers(page)
                 .then(res => {
                     dispatch(get(res.users));
-                    setPage(page + 1);
                     setIsLoading(false);
                     if (page === pageLimit - 1) {
                         setButtonClasses([...buttonClasses, "button_disabled"]);
@@ -31,8 +34,10 @@ export default function GetUsers() {
                 .catch(err => {
                     console.error(err);
                 });
+        } else if (page === 1) {
+            setButtonClasses(["button", "get__more"]);
         }
-    }
+    }, [page]);
 
     React.useEffect(() => {
         setIsLoading(true);

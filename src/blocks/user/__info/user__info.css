@@ -6,4 +6,5 @@
     line-height: 26px;
     display: flex;
     flex-direction: column;
+    text-overflow: ellipsis;
 }

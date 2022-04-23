@@ -1,12 +1,16 @@
 export default function User(props) {
-    const phoneNumber = `${props.phone.slice(0,3)} (${props.phone.slice(3,6)}) ${props.phone.slice(6,9)} ${props.phone.slice(9,11)} ${props.phone.slice(11,13)}`
+    const phoneNumber = props.phone.replace( /^\D+/g, '');
+    const formatted = `+38 (${phoneNumber.slice(2,5)}) ${phoneNumber.slice(5,8)} ${phoneNumber.slice(8,10)} ${phoneNumber.slice(10,12)}`
+    
     return (
         <div className="user">
             <img className="user__avatar" src={props.url} />
             <h3 className="user__name">{props.name}</h3>
             <p className="user__info"><span className="user__position">{props.position}</span>
-                <span className="user__email">{props.email}</span>
-                <span className="user__phone">{phoneNumber}</span>
+                <a className="user__email" href={`mailto:${props.email}`}>{props.email}
+                    <span className="user__email_tooltip">{props.email}</span>
+                </a>
+                <span className="user__phone">{formatted}</span>
             </p>
         </div>
     )
