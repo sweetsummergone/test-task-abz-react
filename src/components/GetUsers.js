@@ -21,8 +21,6 @@ export default function GetUsers() {
             setIsLoading(true);
             getUsers(page + 1)
                 .then(res => {
-                    // const newUserList = [...users];
-                    // newUserList.push(res.users);
                     dispatch(get(res.users));
                     setPage(page + 1);
                     setIsLoading(false);

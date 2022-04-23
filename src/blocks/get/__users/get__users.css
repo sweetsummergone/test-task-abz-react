@@ -11,13 +11,21 @@
 
 @media screen and (max-width: 1280px) {
     .get__users {
-        max-width: calc(282px * 2 + 29px);
+        max-width: calc(282px * 3 + 29px * 2);
+    }
+}
+
+@media screen and (max-width: 1023px) {
+    .get__users {
+        max-width: calc(344px * 2 + 16px);
+        row-gap: 16px;
+        column-gap: 16px;
     }
 }
 
 @media screen and (max-width: 767px) {
     .get__users {
         row-gap: 20px;
-        max-width: 282px;
+        max-width: 328px;
     }
 }

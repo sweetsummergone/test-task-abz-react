@@ -33,7 +33,6 @@
 
 /* Get Contacts */
 @import url("./blocks/get/get.css");
-@import url("./blocks/get/__title/get__title.css");
 @import url("./blocks/get/__users/get__users.css");
 @import url("./blocks/get/__more/get__more.css");
 
@@ -45,7 +44,6 @@
 
 /* Post Contact */
 @import url("./blocks/post/post.css");
-@import url("./blocks/post/__title/post__title.css");
 @import url("./blocks/post/__form/post__form.css");
 @import url("./blocks/post/__image/post__image.css");
 

@@ -8,3 +8,7 @@
     line-height: 14px;
     color: #CB3D40;
 }
+
+.form__error:not(:last-child) {
+    margin-bottom: 32px;
+}

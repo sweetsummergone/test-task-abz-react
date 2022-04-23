@@ -9,7 +9,7 @@
 .form__inputs span{
     position: absolute;
     cursor: text;
-    top: 0;
+    top: -2px;
     left: 16px;
     transition-duration: 0.2s;
     font-weight: 400;
@@ -22,7 +22,7 @@
 .form__inputs input:not(:placeholder-shown) + span {
     left: 12px;
     cursor: default;
-    transform: translateY(-23px);
+    transform: translateY(-21px);
     font-weight: 400;
     font-size: 12px;
     line-height: 14px;
