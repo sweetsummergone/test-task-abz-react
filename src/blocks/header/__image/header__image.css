@@ -1,7 +1,7 @@
 .header__image {
     margin-left: calc((100vw - 1187px) / 2);
-    max-width: 104px;
-    max-height: 26px;
+    width: 104px;
+    height: 26px;
 }
 
 @media screen and (max-width: 767px) {  

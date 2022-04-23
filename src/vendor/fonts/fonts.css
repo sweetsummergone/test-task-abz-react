@@ -1,5 +1,6 @@
 @font-face {
   font-family: "Nunito";
+  font-display: swap;
   src: url("./Nunito-Regular.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;

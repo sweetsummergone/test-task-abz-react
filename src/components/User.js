@@ -4,7 +4,7 @@ export default function User(props) {
     
     return (
         <div className="user">
-            <img className="user__avatar" src={props.url} />
+            <img className="user__avatar" src={props.url} alt={`Photo of ` + props.name}/>
             <h3 className="user__name">{props.name}</h3>
             <p className="user__info"><span className="user__position">{props.position}</span>
                 <a className="user__email" href={`mailto:${props.email}`}>{props.email}
