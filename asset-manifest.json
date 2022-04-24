@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/test-task-abz-react/static/css/main.930bf904.css",
+    "main.css": "/test-task-abz-react/static/css/main.fa4d606f.css",
     "main.js": "/test-task-abz-react/static/js/main.4750fc63.js",
     "static/js/787.3db5563a.chunk.js": "/test-task-abz-react/static/js/787.3db5563a.chunk.js",
     "static/media/background.jpeg": "/test-task-abz-react/static/media/background.be7665f876bbd9138501.jpeg",
@@ -9,12 +9,12 @@
     "static/media/Logo.svg": "/test-task-abz-react/static/media/Logo.8bb55362d01d55393ccc5476d96f0c14.svg",
     "static/media/Preloader.svg": "/test-task-abz-react/static/media/Preloader.0aaf07f39acaa32ce036564ce35dba88.svg",
     "index.html": "/test-task-abz-react/index.html",
-    "main.930bf904.css.map": "/test-task-abz-react/static/css/main.930bf904.css.map",
+    "main.fa4d606f.css.map": "/test-task-abz-react/static/css/main.fa4d606f.css.map",
     "main.4750fc63.js.map": "/test-task-abz-react/static/js/main.4750fc63.js.map",
     "787.3db5563a.chunk.js.map": "/test-task-abz-react/static/js/787.3db5563a.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.930bf904.css",
+    "static/css/main.fa4d606f.css",
     "static/js/main.4750fc63.js"
   ]
 }
